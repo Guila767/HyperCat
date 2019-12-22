@@ -313,7 +313,7 @@ int ProcessArgs(int argc, char* argv[], _Out_ run_args* args)
         {
             if (++i == argc || argv[i][0] == '-')
             {
-                perror("Expected the port before '-PORT'\n");
+                perror("Expected the port number after '-PORT'\n");
                 printf_s("type -h or -help for help\n");
                 return FALSE;
             }
@@ -328,7 +328,7 @@ int ProcessArgs(int argc, char* argv[], _Out_ run_args* args)
         {
             if (++i == argc || argv[i][0] == '-')
             {
-                perror("Expected the file path before '-FILE'\n");
+                perror("Expected the file path after '-FILE'\n");
                 printf_s("type -h or -help for help\n");
                 return FALSE;
             }
@@ -339,7 +339,7 @@ int ProcessArgs(int argc, char* argv[], _Out_ run_args* args)
         {
             if (++i == argc || argv[i][0] == '-')
             {
-                perror("Expected the process name before '-PROCNAME'\n");
+                perror("Expected the process name after '-PROCNAME'\n");
                 printf_s("type -h or -help for help\n");
                 return FALSE;
             }
@@ -348,7 +348,7 @@ int ProcessArgs(int argc, char* argv[], _Out_ run_args* args)
         }
         else
         {
-            printf_s("'%s' was unespected\n", argv[i]);
+            printf_s("'%s' was unexpected\n", argv[i]);
             printf_s("type -h or -help for help\n");
             return FALSE;
         }
@@ -373,7 +373,7 @@ void ShowUsage()
     printf_s("-ATTACH -> Attach to an existing process\n");
     printf_s("-OPEN -> Open a process\n");
     printf_s("\nTarget:\n");
-    printf_s("-FILE -> Path to the process file (open)\n");
+    printf_s("-FILE -> Path to the executable file (open)\n");
     printf_s("-PROCNAME -> Name of the process (attach)\n");
     printf_s("\n-h or -help -> Show this massage\n");
     printf_s("\n============  // ===============\n");
