@@ -281,6 +281,16 @@ int ProcessArgs(int argc, char* argv[], _Out_ run_args* args)
             if (argv[i][0] == '-')
                 argv[i][j] = static_cast<char>(toupper(argv[i][j]));
 
+    for (int i = 1; i < argc; i++)
+    {
+        if (strcmp(argv[i], "-H") == 0 || strcmp(argv[i], "-HELP") == 0)
+        {
+            args->help = TRUE;
+            ShowUsage();
+            return TRUE;
+        }
+    }
+    
     for (int i = 0, count = 0; i < argc; i++, count = 0)
     {
         for (int j = 0; j < 5; j++)
@@ -296,15 +306,6 @@ int ProcessArgs(int argc, char* argv[], _Out_ run_args* args)
         }
     }
 
-    for (int i = 1; i < argc; i++)
-    {
-        if (strcmp(argv[i], "-H") == 0 || strcmp(argv[i], "-HELP") == 0)
-        {
-            args->help = TRUE;
-            ShowUsage();
-            return TRUE;
-        }
-    }
 
     ZeroMemory(args, sizeof(run_args));
     for (int i = 1; i < argc; i++)
