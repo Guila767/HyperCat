@@ -1,7 +1,7 @@
 import socket
 import time
 
-s = socket.socket();
+s = socket.socket()
 s.connect(('localhost', 27062))
 s.send(b"hello from python script ")
 time.sleep(1)
