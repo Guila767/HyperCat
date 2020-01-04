@@ -11,7 +11,7 @@ int ProcessArgs(int argc, char* argv[], _Out_ run_args * args)
     enum args_e { PORT = 0, ATTACH, OPEN, FILE, PROCNAME };
 
     for (int i = 1; i < argc; i++)
-        for (int j = 0; j < strlen(argv[i]); j++)
+        for (size_t j = 0; j < strlen(argv[i]); j++)
             if (argv[i][0] == '-')
                 argv[i][j] = static_cast<char>(toupper(argv[i][j]));
 

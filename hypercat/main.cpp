@@ -15,11 +15,7 @@ void ShowUsage();
 int main(int argc, char* argv[])
 { 
     DWORD dwPID = 0;
-    HANDLE hConsoleInput;
     run_args args;
-
-    SOCKET client;
-    char recvBuff[1024];
 
     if (!ProcessArgs(argc, argv, &args))
         if(argc > 1)
@@ -60,13 +56,10 @@ int main(int argc, char* argv[])
     }
 
     HyperCat hycat(args.port, dwPID);
-    printf_s("Waiting connection to port '%s'...\n", args.port);
+    printf_s("Waiting connection on port '%s'...\n", args.port);
     if (!hycat.Begin())
-    {
-        hycat.~HyperCat();
         return EXIT_FAILURE;
-    }
-    hycat.~HyperCat();
+    FreeRunArgs(&args);
     return 0;
 }
 

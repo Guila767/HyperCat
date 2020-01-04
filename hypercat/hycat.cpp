@@ -98,6 +98,7 @@ HyperCat::HyperCat(_In_ PCSTR port, _In_ DWORD dwProcessID) : processID(dwProces
 HyperCat::~HyperCat()
 {
     free((void*)port);
+    port = NULL;
     WSACleanup();
 }
 
@@ -174,5 +175,5 @@ void strcpy_a(PSTR* dst, PCSTR const src)
 {
     size_t size = sizeof(char) * (strlen(src) + 1);
     *dst = static_cast<PSTR>(malloc(size));
-    memcpy_s(dst, size, src, size);
+    memcpy_s(*dst, size, src, size);
 }
